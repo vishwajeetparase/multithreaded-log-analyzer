@@ -1,36 +1,67 @@
-Sure, here's a high-level directory structure for your project. This is just a suggestion and you can modify it according to your needs:
+## Expanded Folder Structure for Multi-Threaded Log Analyzer (Maven Project)
+
+This folder structure builds upon the previous suggestions and incorporates the Factory Pattern for log parsers:
 
 ```
-MultiThreadedLogAnalyzer
-│
-├── src
-│   ├── main
-│   │   ├── java
-│   │   │   ├── com
-│   │   │   │   ├── yourcompany
-│   │   │   │   │   ├── loganalyzer
-│   │   │   │   │   │   ├── model (For your data models)
-│   │   │   │   │   │   ├── reader (For your LogReader module)
-│   │   │   │   │   │   ├── parser (For your Parser module)
-│   │   │   │   │   │   ├── analyzer (For your Analyzer module)
-│   │   │   │   │   │   ├── aggregator (For your Aggregator module)
-│   │   │   │   │   │   ├── reporter (For your Reporter module)
-│   │   │   │   │   │   └── utils (For utility classes)
-│   │   │   │   │   └── Main.java (Main class to run the application)
-│   │   ├── resources (For your resource files)
-│   ├── test
-│   │   ├── java (For your test classes)
-│   │   ├── resources (For your test resources)
-│
-├── lib (For your external libraries)
-├── logs (For storing log files)
-├── reports (For storing generated reports)
-├── .gitignore
-├── pom.xml (If you are using Maven)
-└── README.md
+log-analyzer/
+├── pom.xml                 # Maven project configuration file
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │           └── com/yourcompany/loganalyzer/
+│   │               ├── config/ (Configuration files)
+│   │               │   └── application.properties  # General configuration (threads, formats, etc.)
+│   │               ├── data/ (Data storage, temporary and export)
+│   │               │   ├── in-memory/  # Temporary data storage (Optional)
+│   │               │   │   └── ConcurrentHashMap.java  # (Optional) (Reference for in-memory storage)
+│   │               │   └── export/     # Exported data (CSV, database, etc.)
+│   │               ├── encryption/ (Encryption related code)  # (Optional)
+│   │               │   ├── EncryptionUtil.java  # Encryption utilities  # (Optional)
+│   │               ├── logging/ (Logging configuration)
+│   │               │   └── log4j2.xml     # Log4j configuration file
+│   │               ├── model/ (Data model classes)
+│   │               │   ├── LogEntry.java     # Represents a single log record
+│   │               │   └── ...              # Additional model classes (optional)
+│   │               ├── parsers/ (Log format parsers)
+│   │               │   ├── AbstractLogParser.java # Abstract base class for parsers (Optional)
+│   │               │   ├── JsonLogParser.java  # Parser for JSON logs
+│   │               │   ├── LogParser.java      # Interface for all log parsers
+│   │               │   ├── XmlLogParser.java   # Parser for XML logs
+│   │               │   └── TextLogParser.java  # Parser for plain text logs
+│   │               ├── processors/ (Log processing logic)
+│   │               │   ├── Aggregator.java    # Aggregates log data (uses ConcurrentHashMap)
+│   │               │   ├── Analyzer.java      # Analyzes log data
+│   │               │   ├── Filter.java         # Filters logs based on criteria
+│   │               │   └── Searcher.java       # Searches logs based on queries
+│   │               ├── readers/ (Log file readers)
+│   │               │   └── LogFileReader.java   # Reads log files using NIO
+│   │               ├── reports/ (Report generation logic)
+│   │               │   └── ReportGenerator.java  # Generates reports in different formats 
+│   │               ├── security/ (Security related code)  # (Optional)
+│   │               │   └── ComplianceChecker.java # Checks for compliance  # (Optional)
+│   │               ├── threadpool/ (Thread pool management)
+│   │               │   └── ThreadPoolManager.java # Manages worker threads using ExecutorService
+│   │               ├── util/ (Utility functions)
+│   │               │   └── ...                # Utility classes
+│   │               └── App.java                # Main application class
+├── test/                   # Unit test code (Optional)
+│   └── main/
+│       └── java/
+│           └── com/yourcompany/loganalyzer/test/  # Your test classes here
+└── README.md               # Project documentation
 ```
 
-This structure separates your source code (`src`) from your libraries (`lib`), log files (`logs`), and reports (`reports`). Inside `src`, 
-there are separate packages for each module of your application, as well as a `utils` package for utility classes. The `main` package contains your `Main.java` file, 
-which is the entry point of your application. If you're using a build tool like Maven, you'll also have a `pom.xml` file at the root of your project. 
-Don't forget to include a `.gitignore` file to ignore files that shouldn't be committed to your repository, and a `README.md` file to document your project. 😊
+**Explanation:**
+
+* **src/main/java/com/yourcompany/loganalyzer/parsers/**:
+    * **AbstractLogParser.java** (Optional): This can be an abstract base class for all parsers, defining common functionalities like setting the log format.
+    * **LogParser.java**: This interface defines the contract for parsing a log entry, including a `parseLogEntry(String logLine)` method.
+    * **Concrete Parser Classes:** Each concrete parser implements the `LogParser` interface and provides specific logic for its format (JSON, XML, Text).
+* **src/main/java/com/yourcompany/loganalyzer/data/in-memory/**:
+    * **ConcurrentHashMap.java** (Reference): This is not included by default in your project, but it's referenced here as a potential choice for in-memory storage.
+* **src/main/java/com/yourcompany/loganalyzer/processors/Aggregator.java**: This class likely uses `ConcurrentHashMap` for thread-safe aggregation of log data.
+
+**Additional Notes:**
+
+* The `test` directory is optional but recommended for unit testing your code.
+* The folder structure can be further customized based on your specific needs and

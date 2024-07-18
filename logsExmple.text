@@ -1,0 +1,45 @@
+Here are some examples of logs in different formats:
+
+**1. Simple Text Format:**
+
+```
+2024-07-19 13:22:41 INFO  Application started successfully.
+2024-07-19 13:23:12 WARNING User login attempt failed for username "johndoe".
+2024-07-19 13:25:07 ERROR  Database connection timed out.
+```
+
+**2. JSON Format:**
+
+```json
+{
+  "timestamp": "2024-07-19T13:22:41Z",
+  "level": "INFO",
+  "message": "Application started successfully."
+}
+{
+  "timestamp": "2024-07-19T13:23:12Z",
+  "level": "WARNING",
+  "message": "User login attempt failed for username \"johndoe\"."
+}
+{
+  "timestamp": "2024-07-19T13:25:07Z",
+  "level": "ERROR",
+  "message": "Database connection timed out."
+}
+```
+
+**3. Apache Web Server Access Log Format:**
+
+```
+127.0.0.1 - - [19/Jul/2024:13:22:41 -0700] "GET / HTTP/1.1" 200 358 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+192.168.1.10 - - [19/Jul/2024:13:23:12 -0700] "POST /login HTTP/1.1" 401 123 "-" "curl/7.81.0"
+10.0.0.3 - - [19/Jul/2024:13:25:07 -0700] "GET /api/data  HTTP/1.1" 500 987 "MyCustomApp" "MyCustomClient/1.0"
+```
+
+**Explanation:**
+
+* **Simple Text Format:** This is a common format with timestamps, log levels (INFO, WARNING, ERROR), and messages.
+* **JSON Format:** This structured format uses key-value pairs for timestamp, level, and message, making it easier to parse and analyze with tools.
+* **Apache Web Server Access Log Format:** This format is commonly used by web servers to record information about client requests, including IP addresses, timestamps, request methods (GET, POST), HTTP status codes, and user agents.
+
+These are just a few examples, and the specific format of your logs will depend on the application or system that generated them.
