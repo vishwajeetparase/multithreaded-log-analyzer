@@ -3,25 +3,23 @@
  * It utilizes the Jackson ObjectMapper library for efficient JSON parsing.
  */
 public class JsonLogParser implements LogParser {
-
-    private final ObjectMapper objectMapper;
-  
-    public JsonLogParser() {
-      this.objectMapper = new ObjectMapper(); // Use a JSON parsing library
-    }
   
     @Override
-    public LogEntry parseLogEntry(String logLine) throws ParseException {
-      try {
-        // Parse the JSON string using ObjectMapper
-        Map<String, Object> data = objectMapper.readValue(logLine, Map.class);
-        String timestamp = (String) data.get("timestamp");
-        String level = (String) data.get("level");
-        String message = (String) data.get("message");
-        return new LogEntry(timestamp, message, LogLevel.valueOf(level));
-      } catch (JsonProcessingException e) {
-        throw new ParseException("Error parsing JSON log entry: " + e.getMessage());
-      }
+    public List<LogEntry> parseLogEntry(String logLine) throws ParseException {
+      List<LogEntry> logEntries = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(logLine);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String timestamp = jsonObject.getString("timestamp");
+                String message = jsonObject.getString("message");
+                LogLevel level = LogLevel.valueOf(jsonObject.getString("level"));
+                logEntries.add(new LogEntry(timestamp, message, level));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return logEntries;
     }
   }
   

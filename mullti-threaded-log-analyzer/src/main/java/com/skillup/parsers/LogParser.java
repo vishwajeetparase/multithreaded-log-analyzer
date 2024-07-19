@@ -13,6 +13,6 @@ public interface LogParser {
      * @return A parsed log object containing extracted data from the log line.
      * @throws ParseException If there's an error parsing the log line.
      */
-    LogEntry parseLogEntry(String logLine) throws ParseException;
+    List<LogEntry> parseLogEntry(String logLine) throws ParseException;
   }
   

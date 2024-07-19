@@ -15,6 +15,38 @@ public class LogEntry {
       this.message = message;
       this.level = level;
     }
+    public String getTimestamp() {
+      return timestamp;
+  }
+
+  public void setTimestamp(String timestamp) {
+      this.timestamp = timestamp;
+  }
+
+  public String getMessage() {
+      return message;
+  }
+
+  public void setMessage(String message) {
+      this.message = message;
+  }
+
+  public LogLevel getLevel() {
+      return level;
+  }
+
+  public void setLevel(LogLevel level) {
+      this.level = level;
+  }
+
+  @Override
+  public String toString() {
+      return "LogEntry{" +
+              "timestamp='" + timestamp + '\'' +
+              ", message='" + message + '\'' +
+              ", level=" + level +
+              '}';
+  }
   
     // Additional methods specific to log data processing (optional)
   }
@@ -25,7 +57,6 @@ public class LogEntry {
   public enum LogLevel {
     INFO,
     WARNING,
-    ERROR,
-    // ... (Add additional levels if needed)
+    ERROR
   }
   
