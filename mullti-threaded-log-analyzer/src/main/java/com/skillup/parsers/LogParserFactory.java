@@ -1,3 +1,5 @@
+package com.skillup.parsers;
+
 /**
  * This class implements the Factory Pattern to create concrete LogParser objects based on the provided log format.
  * It allows for easy creation of the appropriate parser based on the log file format.
@@ -18,7 +20,7 @@ public class LogParserFactory {
         case "JSON":
           return new JsonLogParser();
         case "TEXT":
-          return new TextLogParser();
+          // return new TextLogParser();
         // Add additional cases for other supported formats (e.g., XML)
         default:
           throw new IllegalArgumentException("Unsupported log format: " + format);

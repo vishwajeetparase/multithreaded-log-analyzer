@@ -1,3 +1,9 @@
+package com.skillup.reports;
+
+import java.util.Collection;
+
+import com.skillup.model.LogEntry;
+
 /**
  * This class generates a text-based report summarizing processed log data.
  */

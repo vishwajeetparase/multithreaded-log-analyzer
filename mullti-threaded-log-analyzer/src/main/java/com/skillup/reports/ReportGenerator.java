@@ -1,3 +1,9 @@
+package com.skillup.reports;
+
+import java.util.Collection;
+
+import com.skillup.model.LogEntry;
+
 /**
  * This interface defines the contract for generating reports from processed log data.
  * (Optional if you only need one report format)

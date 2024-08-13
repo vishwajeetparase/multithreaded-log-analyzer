@@ -1,3 +1,7 @@
+package com.skillup.filter;
+
+import com.skillup.model.LogEntry;
+
 public class MessageFilter implements LogEntryFilter {
 
     private final String keyword;

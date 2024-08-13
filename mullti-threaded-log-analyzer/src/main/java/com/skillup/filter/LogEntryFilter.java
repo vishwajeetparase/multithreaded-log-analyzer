@@ -1,3 +1,7 @@
+package com.skillup.filter;
+
+import com.skillup.model.LogEntry;
+
 /**
  * This interface defines a contract for filtering log entries based on some criteria.
  * (Optional if you only need basic filtering)

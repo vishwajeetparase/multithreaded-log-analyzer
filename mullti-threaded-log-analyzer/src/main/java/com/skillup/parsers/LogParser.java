@@ -1,3 +1,10 @@
+package com.skillup.parsers;
+
+import java.text.ParseException;
+import java.util.List;
+
+import com.skillup.model.LogEntry;
+
 /**
  * This interface defines the contract for all log parsers. It specifies the required functionality
  * for parsing a single log entry from a log line (string representation).

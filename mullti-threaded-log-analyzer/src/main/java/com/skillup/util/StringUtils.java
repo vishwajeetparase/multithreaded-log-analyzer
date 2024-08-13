@@ -1,3 +1,5 @@
+package com.skillup.util;
+
 public class StringUtils {
 
     public static boolean isEmpty(String str) {

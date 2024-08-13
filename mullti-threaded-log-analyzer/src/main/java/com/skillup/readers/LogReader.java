@@ -1,3 +1,9 @@
+package com.skillup.readers;
+
+import java.io.IOException;
+
+import com.skillup.model.LogEntry;
+
 /**
  * This interface defines the contract for reading log data from various sources. It provides a way to
  * decouple the log reading logic from the core processing pipeline.

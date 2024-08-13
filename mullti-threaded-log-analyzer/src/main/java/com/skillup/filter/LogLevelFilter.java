@@ -1,3 +1,8 @@
+package com.skillup.filter;
+
+import com.skillup.model.LogEntry;
+import com.skillup.model.LogEntry.LogLevel;
+
 public class LogLevelFilter implements LogEntryFilter {
 
     private final LogLevel minLevel;

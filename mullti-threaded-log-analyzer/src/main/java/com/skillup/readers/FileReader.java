@@ -1,3 +1,11 @@
+package com.skillup.readers;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+
+import com.skillup.model.LogEntry;
+import com.skillup.parsers.LogParser;
+
 /**
  * This class implements the LogReader interface to read log data from a text file line by line.
  * It assumes each line represents a single log entry and parses it using a provided LogParser.

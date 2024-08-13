@@ -1,3 +1,5 @@
+package com.skillup.encryption;
+
 /**
  * This class provides utility functions for encryption and decryption of data.
  * It's intended for optional use if you want to encrypt sensitive log data 

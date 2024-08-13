@@ -1,3 +1,10 @@
+package com.skillup.processors;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.skillup.model.LogEntry;
+
 /**
  * This class implements the LogProcessor interface to collect and aggregate statistics from log entries.
  * It keeps track of counts and other metrics for different log levels, messages, or other data points.

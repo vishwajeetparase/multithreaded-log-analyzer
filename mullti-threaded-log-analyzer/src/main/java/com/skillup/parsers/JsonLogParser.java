@@ -1,3 +1,15 @@
+package com.skillup.parsers;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.skillup.model.LogEntry;
+import com.skillup.model.LogEntry.LogLevel;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 /**
  * This class implements the LogParser interface specifically for parsing JSON-formatted log entries.
  * It utilizes the Jackson ObjectMapper library for efficient JSON parsing.

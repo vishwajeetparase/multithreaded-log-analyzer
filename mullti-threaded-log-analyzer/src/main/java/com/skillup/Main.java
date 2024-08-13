@@ -1,3 +1,16 @@
+package com.skillup;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
+
+import com.skillup.model.LogEntry;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -44,7 +57,8 @@ public class Main {
     String folderPath = "path/to/folder";
 
     // Create a thread pool
-    int numThreads = Runtime.getRuntime().availableProcessors(); // Use available processors
+    int numThreads = Runtime.getRuntime().availableProcessors(); //Use available processors
+    System.out.println(numThreads);
     ExecutorService executor = Executors.newFixedThreadPool(numThreads);
     //ExecutorService executor = Executors.newFixedThreadPool(10);
 
@@ -56,28 +70,27 @@ public class Main {
       throw new FileNotFoundException("Folder not found or empty: " + folderPath);
     }else{
       for (File file : files) {
-        executor.submit(() -> processFile(file));
+        // executor.submit(() -> processFile(file));
     }
     }
     executor.shutdown();
   }
 
-  private static void processFile(File file) {
-    try {
-      String content = Files.lines(file.toPath()).collect(Collectors.joining("\n"));
-      List<LogEntry> logEntries = null;
-      if (file.getName().endsWith(".json")) {
-          logEntries = jsonParser.parse(content);
-      }
-      if (logEntries != null) {
-        for (LogEntry entry : logEntries) {
-            System.out.println("Processed Log Entry: " + entry);
-            // Further processing of the log entry
-        }
-    }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+//   private static void processFile(File file) {
+//     try {
+//       String content = Files.lines(file.toPath()).collect(Collectors.joining("\n"));
+//       List<LogEntry> logEntries = null;
+//       if (file.getName().endsWith(".json")) {
+//           logEntries = jsonParser.parse(content);
+//       }
+//       if (logEntries != null) {
+//         for (LogEntry entry : logEntries) {
+//             System.out.println("Processed Log Entry: " + entry);
+//             // Further processing of the log entry
+//         }
+//     }
+//     } catch (IOException e) {
+//         e.printStackTrace();
+//     }
+// }
 }
-}
-  

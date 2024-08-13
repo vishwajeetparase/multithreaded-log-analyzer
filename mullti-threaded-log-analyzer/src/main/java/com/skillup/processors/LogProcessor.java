@@ -1,3 +1,7 @@
+package com.skillup.processors;
+
+import com.skillup.model.LogEntry;
+
 /**
  * This interface defines the contract for processing parsed log entries. It outlines the core functionality
  * expected from any processor responsible for handling log data.

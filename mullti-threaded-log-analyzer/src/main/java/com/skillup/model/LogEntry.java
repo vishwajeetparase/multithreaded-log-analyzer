@@ -1,3 +1,5 @@
+package com.skillup.model;
+
 /**
  * This class represents a single log entry parsed from a log file.
  * It defines the basic properties commonly found in log data.
@@ -49,7 +51,7 @@ public class LogEntry {
   }
   
     // Additional methods specific to log data processing (optional)
-  }
+  // }
   
   /**
    * An enum representing different log message levels (e.g., INFO, WARNING, ERROR).
@@ -59,4 +61,4 @@ public class LogEntry {
     WARNING,
     ERROR
   }
-  
+}

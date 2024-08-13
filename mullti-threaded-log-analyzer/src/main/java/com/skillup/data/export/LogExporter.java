@@ -1,4 +1,6 @@
-/**
+package com.skillup.data.export;
+
+ /**
  * This class provides functionalities for exporting parsed log data to a CSV file.
  * It utilizes the OpenCSV library for robust CSV handling.
  */
@@ -7,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.opencsv.CSVWriter;
+import com.skillup.model.LogEntry;
 
 public class LogExporter {
 
@@ -23,11 +26,11 @@ public class LogExporter {
     CSVWriter csvWriter = new CSVWriter(writer);
 
     // Write header row
-    csvWriter.write(new String[]{"Timestamp", "Message", "Level"}); // Add more headers if needed
+    csvWriter.writeNext(new String[]{"Timestamp", "Message", "Level"}); // Add more headers if needed
 
     // Write log entries
     for (LogEntry entry : logEntries) {
-      csvWriter.write(new String[]{entry.getTimestamp(), entry.getMessage(), entry.getLevel().toString()});
+      csvWriter.writeNext(new String[]{entry.getTimestamp(), entry.getMessage(), entry.getLevel().toString()});
     }
 
     csvWriter.close();
