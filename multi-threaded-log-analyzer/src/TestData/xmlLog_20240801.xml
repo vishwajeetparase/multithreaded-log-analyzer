@@ -1,0 +1,35 @@
+<logs>
+    <log>
+        <timestamp>2024-08-14T08:30:00Z</timestamp>
+        <level>INFO</level>
+        <message>Application started</message>
+        <sessionId>abc123</sessionId>
+    </log>
+    <log>
+        <timestamp>2024-08-14T08:31:45Z</timestamp>
+        <level>WARN</level>
+        <message>Disk space running low on /dev/sda1</message>
+        <availableSpace>500MB</availableSpace>
+    </log>
+    <log>
+        <timestamp>2024-08-14T08:32:30Z</timestamp>
+        <level>ERROR</level>
+        <message>Failed to connect to database</message>
+        <host>db.example.com</host>
+        <errorCode>DB_CONN_ERROR</errorCode>
+    </log>
+    <log>
+        <timestamp>2024-08-14T08:33:15Z</timestamp>
+        <level>DEBUG</level>
+        <message>User authentication successful</message>
+        <userId>98765</userId>
+        <sessionId>abc123</sessionId>
+    </log>
+    <log>
+        <timestamp>2024-08-14T08:34:00Z</timestamp>
+        <level>INFO</level>
+        <message>User logged out</message>
+        <userId>98765</userId>
+        <sessionId>abc123</sessionId>
+    </log>
+</logs>
